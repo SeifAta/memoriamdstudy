@@ -40,13 +40,10 @@ export default function MCQGenerator({ darkMode }: { darkMode: boolean }) {
     formData.append('num_questions', numQuestions.toString());
 
     try {
-      const response = await fetch('https://seifataa-mcq-generator.hf.space/generate_mcqs', {
-        method: 'POST',
-        headers: {
-          'Authorization': 'Bearer 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',
-        },
-        body: formData,
-      });
+     const response = await fetch('/api/generate', {
+  method: 'POST',
+  body: formData,
+});
 
       const data = await response.json();
       setMcqText(data.mcqs || '⚠️ No MCQs generated.');
